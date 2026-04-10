@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    height: 100vh;
+    /* 深色背景能更好地襯托珍珠光澤 */
+    background: linear-gradient(to bottom, #050505 0%, #0a0a12 60%, #1a1a2e 100%);
+    overflow: hidden;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+/* 單個平面三角形的容器 */
+.triangle-wrapper {
+    position: absolute;
+    /* 使用 GPU 加速位移 */
+    animation: float-around var(--speed) infinite ease-in-out alternate;
+    /* 讓每個三角形初始位置就隨機 */
+    top: var(--y1);
+    left: var(--x1);
+    z-index: -2;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    /* 透過 CSS 變數控制大小 */
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    
+    /* 珍珠色漸變的核心：這裡不設 border-bottom-color，而是設為 transparent */
+    border-bottom: calc(var(--size) * 1.73) solid transparent;
+    
+    /* 珍珠漸變動畫：讓光澤流動 */
+    animation: rotate-self var(--rot-speed) infinite linear;
+    position: relative;
+}
+
+/* 珍珠漸變的實現技巧：使用偽元素，並利用 background-image */
+.triangle::after {
+    content: '';
+    position: absolute;
+    /* 對齊原本三角形的位置 */
+    top: 0; 
+    left: calc(var(--size) * -1);
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 1.73);
+    
+    /* 核心：珍珠漸變 (Radial Gradient) */
+    /* 混合了柔和的粉色、藍色、黃色與白色 */
+    background-image: radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 230, 240, 0.9) 20%,
+        rgba(220, 240, 255, 0.8) 50%,
+        rgba(255, 255, 220, 0.7) 80%,
+        rgba(230, 230, 250, 0.6) 100%
+    );
+    
+    /* 關鍵：將背景剪裁成三角形形狀 */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    
+    /* 柔和的發光，增加立體感 */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+/* 全域移動動畫：簡單的 2D 位移 */
+@keyframes float-around {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(calc(var(--x2) - var(--x1)), calc(var(--y2) - var(--y1))); }
+}
+
+/* 平面自轉動畫 (只繞 Z 軸) */
+@keyframes rotate-self {
+    to { transform: rotateZ(360deg); }
+}
+
+/* Footer 樣式 */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(5, 5, 5, 0.8);
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+

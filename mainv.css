@@ -1,0 +1,154 @@
+:root {
+    /* 定義小三角形的幾何尺寸，可整體按比例縮放 */
+    --side: 10vw; /* 邊長 */
+    /* 幾何公式計算出的高度: height = side * sqrt(3) / 2 */
+    --height: calc(var(--side) * 0.866); 
+    
+    /* 顏色與材質 */
+    --pearl-bg: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(220, 240, 255, 0.9) 30%, 
+        rgba(255, 230, 240, 0.8) 60%, 
+        rgba(230, 230, 250, 0.6) 100%);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    overflow: hidden;
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    /* 設置景深，讓光澤更有層次感 */
+    perspective: 800px;
+}
+
+/* 核心容器：保持 2D/3D 混合場景 (不飄動) */
+.scene {
+    width: calc(var(--side) * 4); /* 大三角形邊長為 4 個小三角形 */
+    height: calc(var(--height) * 4);
+    position: relative;
+    transform-style: preserve-3d;
+    /* 默認角度，讓漸變光澤更明顯 */
+    transform: rotateX(10deg) rotateY(-5deg);
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 80%);
+        pointer-events: none; /* 不干擾點擊 */
+    }
+}
+
+/* 通用三角形面屬性 (平面，幾何堆疊) */
+.triangle-face {
+    position: absolute;
+    width: 0;
+    height: 0;
+    
+    /* CSS 技巧畫出正三角形 */
+    border-left: calc(var(--side) / 2) solid transparent;
+    border-right: calc(var(--side) / 2) solid transparent;
+    /* 核心：border-bottom-color 將由漸變背景剪裁代替 */
+    border-bottom: var(--height) solid transparent;
+    
+    /* 材質：珍珠漸變光澤的核心實現 */
+    /* 創造一個與三角形大小一致的漸變背景偽元素 */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(var(--side) / -2);
+        width: var(--side);
+        height: var(--height);
+        
+        /* 核心：珍珠漸變 (Radial Gradient) */
+        background-image: var(--pearl-bg);
+        
+        /* 關鍵：將背景剪裁成三角形形狀 */
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        
+        /* 柔和發光 */
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        mix-blend-mode: screen; /* 增加光澤 */
+        
+        /* 呼吸光澤動畫 */
+        animation: shimmer 5s infinite ease-in-out alternate;
+    }
+}
+
+/* 光澤流動動畫 */
+@keyframes shimmer {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* --- 幾何排列：完全按照平面圖片的堆疊邏輯 --- */
+
+/* Level 1 (Top) */
+.t1 { transform: translate(calc(var(--side) * 1.5), 0px); }
+
+/* Level 2 */
+.t2 { transform: translate(calc(var(--side) * 1.0), var(--height)); }
+.t3 { transform: translate(calc(var(--side) * 2.0), var(--height)); }
+
+/* Level 3 */
+.t4 { transform: translate(calc(var(--side) * 0.5), calc(var(--height) * 2)); }
+.t5 { transform: translate(calc(var(--side) * 1.5), calc(var(--height) * 2)); }
+.t6 { transform: translate(calc(var(--side) * 2.5), calc(var(--height) * 2)); }
+
+/* Level 4 (Base) */
+.t7 { transform: translate(calc(var(--side) * 0.0), calc(var(--height) * 3)); }
+.t8 { transform: translate(calc(var(--side) * 1.0), calc(var(--height) * 3)); }
+.t9 { transform: translate(calc(var(--side) * 2.0), calc(var(--height) * 3)); }
+.t10 { transform: translate(calc(var(--side) * 3.0), calc(var(--height) * 3)); }
+
+#mainvisual {
+    width: 50%; 
+    height: 100vh;
+}
+
+.mainvisual-item {
+    width: 75%; 
+    margin: auto; 
+    margin-top: 10vh; 
+    background-clip: content-box;
+}
+
+#mainvisual::before {
+    content: "mugtea's \000a    portfolio";
+    white-space: pre;
+    position: absolute;
+    font-size: clamp(2rem, 5vw, 5vw);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+    padding-left: 5vw;
+    top:10vh;
+    display: inline-block;
+    transform:scaleX(1.4);
+}
+
+/* 版面 */
+@media (max-width: 600px) {
+    .mainvisual-item {
+        margin-top: 6vh;
+    }
+    #mainvisual {
+        position: fixed;
+        right: 0;
+    }
+    #mainvisual::before {
+        padding-right: 20vw;
+        padding-left: 0;
+        top:2vh
+    }
+}
