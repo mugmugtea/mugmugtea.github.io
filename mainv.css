@@ -21,8 +21,6 @@ body {
     background: #000;
     overflow: hidden;
     font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-    /* 設置景深，讓光澤更有層次感 */
-    perspective: 800px;
 }
 
 /* 核心容器：保持 2D/3D 混合場景 (不飄動) */
@@ -140,16 +138,16 @@ body {
 }
 
 /* 版面 */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .mainvisual-item {
-        margin-top: 6vh;
+        margin-top: 3vh;
     }
     #mainvisual {
         position: fixed;
         right: 0;
     }
     #mainvisual::before {
-        padding-right: 20vw;
+        padding-right: 30%;
         padding-left: 0;
         top:2vh
     }

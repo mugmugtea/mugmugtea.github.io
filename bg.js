@@ -6,7 +6,7 @@ for (let i = 0; i < count; i++) {
     wrapper.className = 'triangle-wrapper';
     
     const size = Math.random() * 20 + 10;
-    const speed = Math.random() * 15 + 10 + 's';
+    const speed = Math.random() * 35 + 10 + 's';
     const rotSpeed = Math.random() * 10 + 5 + 's';
 
     wrapper.style.setProperty('--size', `${size}px`);
@@ -30,9 +30,9 @@ for (let i = 0; i < count; i++) {
         }
     }
 
-    const x1 = Math.random() * 100;
+    const x1 = Math.random() * 80;
     const y1 = getWeightedY();
-    const x2 = Math.random() * 100;
+    const x2 = Math.random() * 80;
     const y2 = getWeightedY();
 
     wrapper.style.setProperty('--x1', `${x1}vw`);
