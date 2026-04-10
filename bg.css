@@ -17,7 +17,7 @@ body {
 
 /* 單個平面三角形的容器 */
 .triangle-wrapper {
-    position: absolute;
+    position: fixed;
     /* 使用 GPU 加速位移 */
     animation: float-around var(--speed) infinite ease-in-out alternate;
     /* 讓每個三角形初始位置就隨機 */
