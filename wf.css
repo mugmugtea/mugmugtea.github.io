@@ -18,6 +18,7 @@ body {
     max-width: 1000px;
     margin: 0 10%;
     padding: 20px;
+    padding-bottom: 40vh;
 }
 
 #gallery {
@@ -75,17 +76,20 @@ height: 100%;
     filter: brightness(0.95);
 }
 
-.card-a { grid-row: span 9; background-color: #ffadad; }
-.card-b { grid-row: span 6; background-color: #ffd6a5; }
+.card-a { grid-row: span 11; background-color: #ffadad; }
+.card-b { grid-row: span 9; background-color: #ffd6a5; }
 .card-c { grid-row: span 8; background-color: #fdffb6; }
-.card-d { grid-row: span 11; background-color: #caffbf; }
-.card-e { grid-row: span 15; background-color: #9bf6ff; }
-.card-f { grid-row: span 10; background-color: #a0c4ff; }
+.card-d { grid-row: span 10; background-color: #caffbf; }
+.card-e { grid-row: span 8; background-color: #9bf6ff; }
+.card-f { grid-row: span 7; background-color: #a0c4ff; }
 .card-g { grid-row: span 12; background-color: #bdb2ff; }
-.card-h { grid-row: span 9; background-color: #ffc6ff; }
-.card-i { grid-row: span 10; background-color: #ff9cee; }
-.card-j { grid-row: span 13; background-color: #fcbf49; }
-.card-k { grid-row: span 9; background-color: #90be6d; }
+.card-h { grid-row: span 6; background-color: #ffc6ff; }
+.card-i { grid-row: span 8; background-color: #ff9cee; }
+.card-j { grid-row: span 7; background-color: #fcbf49; }
+.card-k { grid-row: span 8; background-color: #90be6d; }
+.card-l { grid-row: span 7; background-color: #f94144; }
+.card-m { grid-row: span 10; background-color: #f3722c; }
+.card-n { grid-row: span 6; background-color: #f8961e; }
 
 
 .modal-overlay {
@@ -160,9 +164,16 @@ height: 100%;
     display: block;
     max-width: 100%;
     max-height: 100%;
-    border-radius: 18px;
-    padding: 2%;
+    border-radius: 12px;
+    border: 6px solid white;
+    margin: 2%;
 }
+.sg img{
+    width: 60%;
+    margin: 0;
+    margin-bottom: 4%;
+}
+
 
 .textbox {
     position: fixed;
@@ -204,8 +215,7 @@ height: 100%;
     display: block;
     max-width: 100%;
     max-height: 100%;
-    border-radius: 18px;
-    padding: 2%;
+    margin: 4%;
     }
     .modal-overlay::before {
     left: 0;
