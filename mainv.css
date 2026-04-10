@@ -140,7 +140,7 @@ body {
 /* 版面 */
 @media (max-width: 768px) {
     .mainvisual-item {
-        margin-top: 3vh;
+        margin-top: 6vh;
     }
     #mainvisual {
         position: fixed;
