@@ -1,5 +1,4 @@
 const cards = document.querySelectorAll('.card');
-const closeButtons = document.querySelectorAll('.close-area');
 const modals = document.querySelectorAll('.modal-overlay');
 
 // 點擊卡片打開對應的模態框
@@ -9,16 +8,6 @@ cards.forEach(card => {
         const modal = document.getElementById(modalId);
         if (modal) {
             modal.classList.add('show');
-        }
-    });
-});
-
-// 點擊 X 按鈕關閉模態框
-closeButtons.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-        const modal = event.target.closest('.modal-overlay');
-        if (modal) {
-            modal.classList.remove('show');
         }
     });
 });
