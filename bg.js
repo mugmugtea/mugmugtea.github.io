@@ -30,9 +30,9 @@ for (let i = 0; i < count; i++) {
         }
     }
 
-    const x1 = Math.random() * 80;
+    const x1 = Math.random() * 100;
     const y1 = getWeightedY();
-    const x2 = Math.random() * 80;
+    const x2 = Math.random() * 100;
     const y2 = getWeightedY();
 
     wrapper.style.setProperty('--x1', `${x1}vw`);
