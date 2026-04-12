@@ -1,5 +1,6 @@
 const cards = document.querySelectorAll('.card');
 const modals = document.querySelectorAll('.modal-overlay');
+const modalContents = document.querySelectorAll('.modal-overlay .modal-content');
 const closeButtons = document.querySelectorAll('.modal-overlay .close-area');
 let activeModal = null;
 let historyStatePushed = false;
@@ -78,6 +79,11 @@ modals.forEach(modal => {
             handleModalCloseRequest();
         }
     });
+});
+
+// 點擊 modal-content 也關閉模態框
+modalContents.forEach(content => {
+    content.addEventListener('click', handleModalCloseRequest);
 });
 
 // 點擊 X 關閉按鈕
