@@ -28,6 +28,10 @@ body {
     position: relative;
 }
 
+#gallery img{
+    pointer-events: none;
+}
+
 #sticky {
     position: sticky;
     top: 20vh;
@@ -161,18 +165,38 @@ height: 100%;
 
 .modal-content h3 {
     margin: 0 0 10px 0;
+    font-size: clamp(1.1rem, 3vw, 3.2rem);
     color: #333;
 }
 
 .modal-content p {
     color: #777;
-    font-size: 14px;
+    font-size: clamp(0.9rem, 2vw, 2.2rem);
     line-height: 1.6;
 }
 
-
-
 /* 版面 */
+@media (min-width: 1280px) {
+    .masonry-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 2vw;
+    grid-auto-flow: dense;
+    gap: 1.5vw;
+    max-width: 1440px;
+    margin: 0 10%;
+    padding: 2vw;
+    padding-bottom: 40vh;
+    }
+    .modal-content {
+    width: 80%;
+    max-width: 2560px;
+    padding: 25px 25px 25px;
+    text-align: left;
+    transform: translateY(-40px);
+}
+}
+
 @media (max-width: 900px) {
     .masonry-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -208,7 +232,6 @@ height: 100%;
 
     }
     .modal-content {
-        width: 60%;
+        width: 70%;
     }
-
 }
