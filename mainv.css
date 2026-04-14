@@ -131,10 +131,11 @@ body {
     color: rgba(255, 255, 255, 0.2);
     pointer-events: none;
     z-index: 1;
-    padding-left: 5vw;
+    padding-left: 6vw;
     top:10vh;
     display: inline-block;
-    transform:scaleX(1.4);
+    transform:scale(1.4 ,1.4);
+    text-transform: uppercase;
 }
 
 /* 版面 */
@@ -147,7 +148,7 @@ body {
         right: 0;
     }
     #mainvisual::before {
-        padding-right: 30%;
+        padding-right: 100vw;
         padding-left: 0;
         top:2vh
     }
