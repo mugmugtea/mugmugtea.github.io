@@ -128,18 +128,18 @@ body {
 }
 
 #mainvisual::before {
-    content: "mugtea's \000a    portfolio";
+    content: "mugtea 's\000aportfolio";
     white-space: pre;
     position: absolute;
-    font-size: clamp(2rem, 5vw, 5vw);
+    font-size: clamp(1.8rem, 4vw, 4vw);
     font-weight: 700;
     letter-spacing: 0.1em;
     pointer-events: none;
     z-index: 1;
-    padding-left: 6vw;
-    top:10vh;
+    top:30vh;
+    left:6vw;
     display: inline-block;
-    transform:scale(1.4 ,1.4);
+    transform:scale(1.4 ,1.0);
     text-transform: uppercase;
     background: linear-gradient(
     var(--angle),
@@ -151,7 +151,6 @@ body {
     background-clip: text;
     color: transparent;
     animation: full-rotate 8s infinite linear;
-    opacity: 0.5;
 }
 
 @keyframes full-rotate {
@@ -170,8 +169,13 @@ body {
         right: 0;
     }
     #mainvisual::before {
-        padding-right: 100vw;
-        padding-left: 0;
-        top:2vh
+        top:9vh;
+        right:-80vw;
+    }
+}
+
+@media (min-width: 520px) and (max-width: 768px) {
+    #mainvisual::before {
+        right:-10vw;
     }
 }
