@@ -151,6 +151,7 @@ body {
     background-clip: text;
     color: transparent;
     animation: full-rotate 8s infinite linear;
+    opacity: 0.4;
 }
 
 @keyframes full-rotate {
