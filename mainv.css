@@ -27,9 +27,6 @@ body {
     width: calc(var(--side) * 4); /* 大三角形邊長為 4 個小三角形 */
     height: calc(var(--height) * 4);
     position: relative;
-    transform-style: preserve-3d;
-    /* 默認角度，讓漸變光澤更明顯 */
-    transform: rotateX(10deg) rotateY(-5deg);
     margin-top: -10vw;
 
     &::after {
@@ -138,6 +135,7 @@ body {
     transform:scale(1.4 ,1.0);
     text-transform: uppercase;
     background-color: #000;
+    border-radius: 3.3px;
 }
 
 /* 版面 */
