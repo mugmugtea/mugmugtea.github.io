@@ -5,13 +5,14 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #050505 0%, #0a0a12 60%, #1a1a2e 100%);
+    background: linear-gradient(to bottom, #dbdce2 0%, #dbdce2 60%, #dbdce2 100%);
 }
 
 #container {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: row;
     margin: 0 auto;
 }
 
@@ -55,11 +56,11 @@ body {
     /* 混合了柔和的粉色、藍色、黃色與白色 */
     background-image: radial-gradient(
         circle at 30% 30%,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 230, 240, 0.9) 20%,
-        rgba(220, 240, 255, 0.8) 50%,
-        rgba(255, 255, 220, 0.7) 80%,
-        rgba(230, 230, 250, 0.6) 100%
+        rgba(205, 205, 205, 1) 0%,
+        rgba(255, 160, 198, 0.7) 20%,
+        rgba(166, 216, 255, 0.9) 50%,
+        rgba(224, 224, 129, 0.6) 80%,
+        rgba(181, 181, 255, 0.7) 100%
     );
     
     /* 關鍵：將背景剪裁成三角形形狀 */
@@ -91,9 +92,15 @@ footer {
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
     padding: 12px 0;
-    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    font-size: clamp(0.9rem, 1vw + 0.8rem, 1.2rem);
     letter-spacing: 0.5px;
     backdrop-filter: blur(5px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+@media (max-width: 768px) {
+#container {
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+}
